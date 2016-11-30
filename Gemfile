@@ -9,7 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails' #for this project 
-gem 'devise-bootstrap-views'
+gem 'devise-bootstrap-views' #for this project 
 gem 'stock_quote'
 gem 'devise' #for authentication
 gem 'turbolinks', '~> 5'
