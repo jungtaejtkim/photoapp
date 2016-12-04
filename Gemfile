@@ -18,6 +18,7 @@ gem 'will_paginate', '3.1.5'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'jbuilder', '~> 2.5'
 gem 'rails-controller-testing'
+gem 'stripe'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
