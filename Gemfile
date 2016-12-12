@@ -12,13 +12,16 @@ gem 'twitter-bootstrap-rails' #for this project
 gem 'devise-bootstrap-views' #for this project 
 gem 'stock_quote'
 gem 'devise' #for authentication
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '3.1.5'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'jbuilder', '~> 2.5'
 gem 'rails-controller-testing'
 gem 'stripe'
+gem 'carrierwave' #image upload
+gem 'mini_magick'  #image resize
+gem 'fog' 
 group :development, :test do
   gem 'byebug', platform: :mri
 end

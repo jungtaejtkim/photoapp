@@ -15,7 +15,7 @@ class Payment < ApplicationRecord
 		customer = Stripe::Customer.create email: email, card: token
 
 		Stripe::Charge.create customer: customer.id,
-		amount: 1000,
+		amount: 1,
 		description: 'Premiun',
 		currency: 'usd'
 

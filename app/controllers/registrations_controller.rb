@@ -1,28 +1,42 @@
 class RegistrationsController < Devise::RegistrationsController
 
-	def create
-		build_resource(sign_up_params)
-		resource.class.transaction do 
-			resource.save
-			yield resource if block_given?
-			if resource.persisted?
-				@payment = Payment.new({ email: params["user"]["email"], token: params[:payment]["token"], user_id: resource.id})
+def create
 
-				flash[:error] = "Plaease check registration errors" unless @payment.valid?
+build_resource(sign_up_params)
 
+resource.class.transaction do
 
-				begin
-					@payment.process_payment
-					@payment.save
-				rescue Exception => e
-					flash[:error] = e.message
+resource.save
 
-					resource.destroy
-					puts 'Payment faield'
-					render :new and return
+yield resource if block_given?
 
-				end
-				if resource.active_for_authentication?
+if resource.persisted?
+
+@payment = Payment.new({ email: params["user"]["email"],
+
+token: params[:payment]["token"], user_id: resource.id })
+
+flash[:error] = "Please check registration errors" unless @payment.valid?
+
+begin
+
+@payment.process_payment
+
+@payment.save
+
+rescue Exception => e
+
+flash[:error] = e.message
+
+resource.destroy
+
+puts 'Payment failed'
+
+render :new and return
+
+end
+
+if resource.active_for_authentication?
 
 set_flash_message :notice, :signed_up if is_flashing_format?
 
@@ -64,5 +78,3 @@ end
 
 end
 
-
-			
